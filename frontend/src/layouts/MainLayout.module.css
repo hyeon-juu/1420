@@ -1,0 +1,16 @@
+.page {
+  min-height: 100vh;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr 280px;
+  gap: 20px;
+  min-height: calc(100vh - 64px);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content {
+  min-width: 0;
+}

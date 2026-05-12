@@ -1,19 +1,11 @@
-import Nav from "../components/Nav";
-import LeftSidebar from "../components/LeftSidebar";
-import MainContent from "../components/MainContent";
-import RightSidebar from "../components/RightSidebar";
+import styles from "./MyOrbit.module.css";
 
 function MyOrbit() {
   return (
-    <div>
-      <Nav />
-
-      <div className="layout">
-        <LeftSidebar />
-        <MainContent />
-        <RightSidebar />
-      </div>
-    </div>
+    <section className={styles.container}>
+      <h1>My Orbit</h1>
+      <p>내 주변 행성들의 궤도를 확인하는 화면입니다.</p>
+    </section>
   );
 }
 

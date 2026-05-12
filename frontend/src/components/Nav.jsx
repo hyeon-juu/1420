@@ -1,6 +1,7 @@
+import styles from "./Nav.module.css";
 function Nav() {
   return (
-    <nav className="nav">
+    <nav className={styles.nav}>
       <div>nav</div>
     </nav>
   );

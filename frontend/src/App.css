@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -19,7 +19,7 @@ body {
 .layout {
   display: grid;
   grid-template-columns: 300px 1fr 300px;
-  /* gap: 16px; */
+  
   min-height: calc(100vh - 60px);
 }
 
@@ -40,4 +40,4 @@ body {
     gap: 12px;
     padding: 16px;
   }
-}
+} */
