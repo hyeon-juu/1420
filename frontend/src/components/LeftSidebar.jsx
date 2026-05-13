@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
 import styles from "./LeftSidebar.module.css";
 import { useState } from "react";
 import profileImage from "../assets/사람2.jpg";
 
->>>>>>> 782f2d8 (LeftSidebar 첫 수정)
 function LeftSidebar() {
   // 수정창 열렸는지 닫혔는지 여부
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -22,14 +19,14 @@ function LeftSidebar() {
     // 별조각 -> 다른 유저가 주면 올라가도록 구현 필요
     starfragment: 84,
   });
-  
+
   // 임시 수정본
   const [editProfile, setEditProfile] = useState(profile);
 
   // edit 버튼 누르면 실행
   const openEditModal = () => {
     setEditProfile(profile); // 현재 profile 데이터를 editProfile에 복사
-    setIsEditOpen(true); 
+    setIsEditOpen(true);
   };
 
   // cancle 버튼 누르면 실행
@@ -43,29 +40,26 @@ function LeftSidebar() {
     setIsEditOpen(false);
   };
 
-
   return (
-<<<<<<< HEAD
-    <div className="left-sidebar">
-      <div>left side bar</div>
-    </div>
-=======
     <aside className={styles.sidebar}>
-        <div className={styles.profileTitle}>
-          <span>MY PROFILE</span>
-        </div>
+      <div className={styles.profileTitle}>
+        <span>MY PROFILE</span>
+      </div>
 
-        <div className={styles.profileCard}>
-          <div className={styles.profileImageBox}>
-            <img
-              src={profileImage}
-              alt="프로필 이미지"
-              className={styles.profileImage}
-            />
+      <div className={styles.profileCard}>
+        <div className={styles.profileImageBox}>
+          <img
+            src={profileImage}
+            alt="프로필 이미지"
+            className={styles.profileImage}
+          />
         </div>
 
         <div className={styles.profileTextArea}>
-          <button className={styles.editButton} onClick={openEditModal}> 편집 </button>
+          <button className={styles.editButton} onClick={openEditModal}>
+            {" "}
+            편집{" "}
+          </button>
 
           <h2 className={styles.name}>{profile.name}</h2>
           <p className={styles.id}>#{profile.id}</p>
@@ -154,9 +148,7 @@ function LeftSidebar() {
                   });
                 }}
               />
-              <p>
-                {editProfile.statusmessage.length}/30
-              </p>
+              <p>{editProfile.statusmessage.length}/30</p>
             </label>
 
             <label>
@@ -179,10 +171,7 @@ function LeftSidebar() {
           </div>
         </div>
       )}
-      
-
     </aside>
->>>>>>> 782f2d8 (LeftSidebar 첫 수정)
   );
 }
 
