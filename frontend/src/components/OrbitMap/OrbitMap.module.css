@@ -1,0 +1,125 @@
+.orbitMap {
+  position: relative;
+  width: min(100%, 900px);
+  aspect-ratio: 900 / 700;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.orbitMap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.8) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.7) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 65% 75%,
+      rgba(255, 255, 255, 0.65) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 40% 60%,
+      rgba(255, 255, 255, 0.55) 0 1px,
+      transparent 1.5px
+    );
+  background-size:
+    180px 180px,
+    220px 220px,
+    260px 260px,
+    300px 300px;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.orbitSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.planetLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.planetNode {
+  position: absolute;
+  width: var(--planet-size);
+  min-height: calc(var(--planet-size) + 58px);
+  padding: 0;
+  border: none;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.planetImage {
+  width: var(--planet-size);
+  height: var(--planet-size);
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  image-rendering: pixelated;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.nameCard {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--planet-size) + 8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 118px;
+  padding: 8px 12px;
+  border: 1px solid rgba(78, 125, 184, 0.42);
+  border-radius: 2px;
+  background: rgba(4, 10, 22, 0.86);
+  color: #b7d9ff;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.nameCard strong {
+  color: #7fbaff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.nameCard span {
+  color: #aab3c4;
+}
+
+.centerPlanet .nameCard {
+  top: calc(var(--planet-size) - 2px);
+  min-width: 150px;
+  padding: 10px 16px;
+  background: rgba(3, 10, 22, 0.94);
+}
+
+.centerPlanet .nameCard strong {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.centerPlanet .nameCard span {
+  color: #64a9ff;
+  font-size: 14px;
+}
