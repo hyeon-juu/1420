@@ -323,15 +323,21 @@
 }
 
 /* diary's rightside bar css */
+/* diary's rightside bar css */
 .diaryPanel {
   height: 100%;
   min-height: 0;
-  padding: 18px;
   box-sizing: border-box;
 
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  padding: clamp(6px, 1vh, 10px);
+
+  display: grid;
+  grid-template-rows:
+    minmax(0, 1.15fr)
+    minmax(0, 0.8fr)
+    minmax(0, 0.75fr)
+    minmax(0, 0.42fr);
+  gap: clamp(6px, 0.9vh, 10px);
 
   overflow: hidden;
   color: #d8dcff;
@@ -340,6 +346,9 @@
 
 .diarySection {
   position: relative;
+  min-height: 0;
+  overflow: hidden;
+
   border: 1px solid rgba(101, 88, 217, 0.34);
   background: linear-gradient(
     180deg,
@@ -349,7 +358,8 @@
   box-shadow:
     inset 0 0 18px rgba(101, 88, 217, 0.09),
     0 0 16px rgba(0, 0, 0, 0.35);
-  padding: 18px 18px 16px;
+
+  padding: clamp(8px, 1.1vh, 12px);
   box-sizing: border-box;
 }
 
@@ -377,9 +387,9 @@
 }
 
 .diarySectionTitle {
-  margin: 0 0 16px;
+  margin: 0 0 clamp(6px, 0.9vh, 10px);
   color: #7fb8d8;
-  font-size: 15px;
+  font-size: clamp(11px, 1.35vh, 14px);
   font-weight: 700;
   letter-spacing: 2px;
   text-shadow: 0 0 8px rgba(127, 184, 216, 0.38);
@@ -391,26 +401,27 @@
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 18px;
+  margin-bottom: clamp(6px, 0.9vh, 10px);
 }
 
 .calendarHeader strong {
   color: #7fb8d8;
-  font-size: 21px;
+  font-size: clamp(15px, 2vh, 20px);
   letter-spacing: 3px;
   font-weight: 700;
 }
 
 .calendarHeader button {
-  width: 30px;
-  height: 30px;
+  width: clamp(20px, 2.8vh, 28px);
+  height: clamp(20px, 2.8vh, 28px);
   border: 0;
   background: transparent;
   color: #7fb8d8;
-  font-size: 30px;
+  font-size: clamp(22px, 3vh, 30px);
   font-family: "Courier New", monospace;
   cursor: pointer;
   opacity: 0.9;
+  line-height: 1;
 }
 
 .calendarHeader button:hover {
@@ -426,23 +437,23 @@
 }
 
 .calendarWeekNames {
-  margin-bottom: 11px;
+  margin-bottom: clamp(4px, 0.6vh, 7px);
 }
 
 .calendarWeekNames span {
   color: #aeb4d0;
-  font-size: 13px;
+  font-size: clamp(10px, 1.25vh, 12px);
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .calendarGrid {
-  row-gap: 8px;
+  row-gap: clamp(2px, 0.45vh, 5px);
 }
 
 .calendarDate {
-  width: 32px;
-  height: 32px;
+  width: clamp(22px, 3.1vh, 30px);
+  height: clamp(22px, 3.1vh, 30px);
   margin: 0 auto;
 
   border: 1px solid transparent;
@@ -450,10 +461,11 @@
 
   color: #d8dcff;
   font-family: "Courier New", monospace;
-  font-size: 15px;
+  font-size: clamp(11px, 1.45vh, 14px);
   font-weight: 700;
 
   cursor: pointer;
+  line-height: 1;
 }
 
 .calendarDate:hover {
@@ -479,14 +491,18 @@
 .diaryStats {
   display: flex;
   flex-direction: column;
+  height: calc(100% - 22px);
+  min-height: 0;
 }
 
 .diaryStatRow {
+  flex: 1;
+  min-height: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  min-height: 38px;
   border-bottom: 1px solid rgba(101, 88, 217, 0.12);
 }
 
@@ -496,21 +512,22 @@
 
 .diaryStatRow span {
   color: #aeb4d0;
-  font-size: 13px;
+  font-size: clamp(10px, 1.25vh, 12px);
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .diaryStatRow strong {
   color: #b7d8a6;
-  font-size: 14px;
+  font-size: clamp(11px, 1.35vh, 13px);
   letter-spacing: 1px;
 }
 
 /* Memory Signal */
 .signalBox {
   position: relative;
-  height: 108px;
+  height: clamp(54px, 8vh, 82px);
+
   border: 1px solid rgba(127, 184, 216, 0.15);
   background:
     linear-gradient(rgba(127, 184, 216, 0.08) 1px, transparent 1px),
@@ -544,38 +561,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
 }
 
 .signalBars span {
-  width: 3px;
-  height: var(--signal-height);
+  width: 2px;
+  height: min(var(--signal-height), 64px);
   background: #7ed9e8;
   box-shadow: 0 0 7px rgba(126, 217, 232, 0.72);
   opacity: 0.9;
 }
 
 .stabilityRow {
-  margin-top: 13px;
+  margin-top: clamp(6px, 0.9vh, 10px);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   color: #b7d8a6;
-  font-size: 13px;
+  font-size: clamp(10px, 1.25vh, 12px);
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .stabilityBars {
   display: flex;
-  gap: 4px;
+  gap: 3px;
 }
 
 .stabilityBars span {
-  width: 5px;
-  height: 12px;
+  width: 4px;
+  height: clamp(8px, 1.3vh, 11px);
   background: rgba(174, 180, 208, 0.18);
 }
 
@@ -586,16 +603,21 @@
 
 /* Backup */
 .backupRows {
+  height: calc(100% - 22px);
+  min-height: 0;
+
   display: flex;
   flex-direction: column;
 }
 
 .backupRows div {
+  flex: 1;
+  min-height: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  min-height: 42px;
   border-bottom: 1px solid rgba(101, 88, 217, 0.12);
 }
 
@@ -605,14 +627,14 @@
 
 .backupRows span {
   color: #aeb4d0;
-  font-size: 13px;
+  font-size: clamp(10px, 1.2vh, 12px);
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .backupRows strong {
   color: #d8dcff;
-  font-size: 13px;
+  font-size: clamp(10px, 1.2vh, 12px);
   letter-spacing: 1px;
 }
 
@@ -620,6 +642,7 @@
   color: #9fdf87;
   text-shadow: 0 0 8px rgba(159, 223, 135, 0.45);
 }
+
 .hasDiary {
   position: relative;
 }
@@ -628,7 +651,7 @@
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 3px;
+  bottom: 2px;
 
   width: 4px;
   height: 4px;
