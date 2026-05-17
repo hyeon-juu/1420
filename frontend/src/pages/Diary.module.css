@@ -1,0 +1,278 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 28px;
+    background: #03070c;
+    color: #9ee7f0;
+    box-sizing: border-box;
+    font-family: "Courier New", monospace;
+}
+
+.diaryTerminal {
+    width: 100%;
+    max-width: 1030px;
+    margin: 0 auto;
+    padding: 22px;
+    border: 1px solid #263d4b;
+    background: #050910;
+    box-sizing: border-box;
+}
+
+.terminalTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 26px;
+}
+
+.terminalTitle h4 {
+    margin: 0;
+    color: #79b7ff;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+.terminalTitle p {
+    margin: 8px 0 0;
+    color: #9a9ca5;
+    font-size: 14px;
+    letter-spacing: 4px;
+}
+
+.terminalTitle span {
+    color: #a9e891;
+    font-size: 16px;
+}
+
+.logEditor {
+    border: 1px solid #263d4b;
+    background: #02060b;
+}
+
+.editorHeader {
+    height: 52px;
+    padding: 0 20px;
+    border-bottom: 1px solid #182630;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #8cc8ff;
+    font-size: 16px;
+}
+
+.editorBody {
+    height: 320px;
+    padding: 22px;
+    border-bottom: 1px solid #182630;
+    box-sizing: border-box;
+}
+
+.editorTextarea {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: none;
+    resize: none;
+    background: transparent;
+    color: #9ee7f0;
+    font-size: 16px;
+    line-height: 1.8;
+    font-family: inherit;
+}
+
+.editorTextarea::placeholder {
+    font-family: inherit;
+    color: #334b5a;
+}
+
+.editorFooter {
+    height: 48px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #a9e891;
+    font-size: 17px;
+}
+
+.actionButtons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin: 12px 0 20px;
+}
+
+.actionButtons button {
+    height: 60px;
+    color: #bcc2e2;
+    border: 1px solid #252c40;
+    background: #080c18;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.actionButtons button:hover {
+    background: #151b2d;
+    border-color: #7667ff;
+    color: white;
+}
+
+.logHistory {
+    min-height: 210px;
+    border: 1px solid #263d4b;
+    padding: 16px;
+    background: #03070c;
+    box-sizing: border-box;
+}
+
+.logHistory h5 {
+    margin: 0 0 14px;
+    color: #c8ced8;
+    font-size: 16px;
+}
+
+.historyItem {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70px 220px 1fr;
+    gap: 12px;
+    padding: 11px;
+    border: 0;
+    border-bottom: 1px solid #182630;
+    background: transparent;
+    color: #8f98a3;
+    text-align: left;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.historyItem:hover {
+    background: #0d1821;
+    color: #9ee7f0;
+}
+
+.emptyText {
+    font-size: 10px;
+    color: #5f6d78;
+    margin: 0;
+}
+
+.archiveModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 28px;
+    box-sizing: border-box;
+}
+
+.archiveWindow {
+    position: relative;
+    width: 100%;
+    max-width: 1030px;
+    height: calc(100vh - 56px);
+    padding: 22px;
+    border: 1px solid #263d4b;
+    background: #050910;
+    box-sizing: border-box;
+    color: #9ee7f0;
+}
+
+.archiveClose {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #263d4b;
+    background: #070b12;
+    color: #9ee7f0;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.archiveTitle {
+    margin-bottom: 24px;
+}
+
+.archiveTitle h4 {
+    margin: 0;
+    color: #79b7ff;
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+
+.archiveTitle p {
+    margin: 8px 0 0;
+    color: #9a9ca5;
+    font-size: 18px;
+}
+
+.archiveList {
+    height: calc(100% - 90px);
+    overflow-y: auto;
+    border: 1px solid #263d4b;
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+.archiveItem {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80px 230px 1fr;
+    gap: 14px;
+    padding: 14px;
+    border: 0;
+    border-bottom: 1px solid #182630;
+    background: transparent;
+    color: #9ca5af;
+    text-align: left;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.archiveItem:hover {
+    background: #0d1821;
+    color: #9ee7f0;
+}
+
+.logDetail {
+    height: calc(100% - 90px);
+    border: 1px solid #263d4b;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.backButton {
+    margin-bottom: 20px;
+    border: 1px solid #263d4b;
+    background: #070b12;
+    color: #8cc8ff;
+    padding: 10px 14px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.detailHeader {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #182630;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    color: #8cc8ff;
+    font-size: 18px;
+}
+
+.logDetail p {
+    white-space: pre-wrap;
+    line-height: 1.8;
+    font-size: 20px;
+    margin: 0;
+}
