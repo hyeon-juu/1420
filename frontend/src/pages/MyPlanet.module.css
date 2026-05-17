@@ -1,0 +1,223 @@
+.container {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+
+  padding: 20px 24px 18px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(101, 88, 217, 0.12),
+      transparent 42%
+    ),
+    #050711;
+
+  color: #d8dcff;
+  font-family: "Courier New", monospace;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 8px;
+
+  position: relative;
+  z-index: 3;
+}
+
+.emptyPanel {
+  border: 1px solid rgba(101, 88, 217, 0.55);
+  background: rgba(8, 12, 24, 0.92);
+  box-shadow:
+    inset 0 0 18px rgba(101, 88, 217, 0.15),
+    0 0 22px rgba(101, 88, 217, 0.12);
+  padding: 28px;
+  border-radius: 14px;
+}
+
+.star {
+  color: #a7ffd1;
+  text-shadow: 0 0 10px rgba(167, 255, 209, 0.9);
+  font-size: 22px;
+}
+
+.title {
+  margin: 0;
+  font-size: 23px;
+  letter-spacing: 2px;
+  color: #f0f2ff;
+}
+
+.description {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #aeb4d0;
+  letter-spacing: 1px;
+}
+
+/* 남은 화면 높이만 사용하는 영역 */
+.stageWrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* 실제 이미지와 버튼이 올라가는 기준 박스 */
+.planetStage {
+  position: relative;
+
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  flex: 0 1 auto;
+}
+
+/* 행성 이미지 */
+.baseImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  image-rendering: pixelated;
+
+  user-select: none;
+  pointer-events: none;
+
+  filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.72)) brightness(0.92);
+}
+
+/* 이름 버튼 */
+.buildingNameButton {
+  position: absolute;
+  z-index: 2;
+
+  min-width: 108px;
+  height: 32px;
+  padding: 0 14px;
+
+  border: 1px solid rgba(118, 103, 255, 0.58);
+  border-radius: 4px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(32, 37, 52, 0.96),
+    rgba(9, 12, 23, 0.96)
+  );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 -8px 14px rgba(0, 0, 0, 0.35),
+    0 0 12px rgba(101, 88, 217, 0.28);
+
+  color: #f3d96b;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px rgba(243, 217, 107, 0.45);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.buildingNameButton::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+
+  border: 1px solid rgba(216, 220, 255, 0.08);
+
+  pointer-events: none;
+}
+
+.buildingNameButton:hover {
+  transform: translateY(-2px);
+
+  color: #a7ffd1;
+  border-color: rgba(167, 255, 209, 0.88);
+
+  background: linear-gradient(
+    180deg,
+    rgba(47, 51, 78, 0.98),
+    rgba(13, 17, 32, 0.98)
+  );
+
+  box-shadow:
+    inset 0 0 12px rgba(118, 103, 255, 0.2),
+    0 0 16px rgba(167, 255, 209, 0.28);
+}
+
+.buildingNameButton:active {
+  transform: translateY(0);
+}
+
+/* 왼쪽 돔 건물 */
+.observatoryButton {
+  left: 20%;
+  top: 27%;
+}
+
+/* 중앙 탑 */
+.signalTowerButton {
+  left: 42%;
+  top: 17%;
+}
+
+/* 오른쪽 안테나 건물 */
+.labButton {
+  right: 16%;
+  top: 32%;
+}
+
+/* 왼쪽 하단 건물 */
+.archiveButton {
+  left: 16%;
+  top: 56%;
+}
+
+/* 오른쪽 하단 건물 */
+.houseButton {
+  right: 17%;
+  top: 58%;
+}
+
+/* 하단 착륙장 */
+.portalButton {
+  left: 50%;
+  top: 72%;
+  transform: translateX(-50%);
+}
+
+.portalButton:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.portalButton:active {
+  transform: translateX(-50%);
+}

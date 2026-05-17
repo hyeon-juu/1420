@@ -298,3 +298,26 @@
   font-size: 15px;
   letter-spacing: 1px;
 }
+
+.movePlanetButton {
+  width: 100%;
+  margin-top: clamp(10px, 1.5vh, 18px);
+  padding: 12px 14px;
+  background: #080c18;
+  border: 1px solid #6558d9;
+  color: #d8dcff;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 14px rgba(130, 140, 255, 0.08);
+}
+
+.movePlanetButton:hover {
+  background: #211b4d;
+  border-color: #7667ff;
+  color: #ffffff;
+  box-shadow:
+    inset 0 0 18px rgba(130, 140, 255, 0.16),
+    0 0 14px rgba(118, 103, 255, 0.28);
+}

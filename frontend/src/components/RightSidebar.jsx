@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./RightSidebar.module.css";
 
 function InfoRow({ icon, label, value }) {
@@ -14,6 +15,8 @@ function InfoRow({ icon, label, value }) {
 }
 
 function RightSidebar({ selectedPlanet }) {
+  const navigate = useNavigate();
+
   if (!selectedPlanet) {
     return (
       <aside className={styles.rightSidebar}>
@@ -27,6 +30,14 @@ function RightSidebar({ selectedPlanet }) {
 
   const status = selectedPlanet.status || "ONLINE";
   const isOnline = status === "ONLINE";
+
+  function handleMovePlanet() {
+    navigate("/my-planet", {
+      state: {
+        planet: selectedPlanet,
+      },
+    });
+  }
 
   return (
     <aside className={styles.rightSidebar}>
@@ -85,6 +96,14 @@ function RightSidebar({ selectedPlanet }) {
             value={selectedPlanet.lastActive || selectedPlanet.lastAccess}
           />
         </div>
+
+        <button
+          type="button"
+          className={styles.movePlanetButton}
+          onClick={handleMovePlanet}
+        >
+          {selectedPlanet.name} 행성으로 이동하기
+        </button>
 
         <div className={styles.memoCard}>
           <div className={styles.memoHeader}>

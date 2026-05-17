@@ -4,6 +4,9 @@ import styles from "./MyOrbit.module.css";
 import planet1Img from "../assets/planets/planet1.png";
 import planet2Img from "../assets/planets/planet2.png";
 import planet3Img from "../assets/planets/planet3.png";
+import planet1BaseImg from "../assets/planets/planet1_base.png";
+import planet2BaseImg from "../assets/planets/planet2_base.png";
+import planet3BaseImg from "../assets/planets/planet3_base.png";
 
 const VIEWBOX = {
   width: 900,
@@ -33,10 +36,11 @@ const ORBITS = [
 const PLANETS = [
   {
     id: "me",
-    name: "오른이 살고 있어요",
+    name: "Ornn",
     subName: "1420-7B",
     isCenter: true,
     image: planet2Img,
+    baseImage: planet2BaseImg,
     positionClass: "planetMe",
 
     owner: "PLANET WALKER",
@@ -50,10 +54,11 @@ const PLANETS = [
   },
   {
     id: "planet-2",
-    name: "샤코 ;;",
+    name: "Shaco",
     subName: "0172-XA",
     lastAccess: "마지막 접속 7일 전",
     image: planet1Img,
+    baseImage: planet1BaseImg,
     positionClass: "planetShaco",
 
     owner: "SHACO",
@@ -67,10 +72,11 @@ const PLANETS = [
   },
   {
     id: "planet-3",
-    name: "earth",
+    name: "Teemo",
     subName: "0301-ER",
     lastAccess: "마지막 접속 47일 전",
     image: planet3Img,
+    baseImage: planet3BaseImg,
     positionClass: "planetEarth",
 
     owner: "EARTH WALKER",
@@ -79,7 +85,7 @@ const PLANETS = [
     visits: 19,
     starFragment: 5,
     lastActive: "47일 전",
-    memo: '"지구입니다"',
+    memo: '"헛둘셋"',
     status: "OFFLINE",
   },
 ];

@@ -107,29 +107,11 @@
   line-height: 1.6;
 }
 
-.divider {
-  border-top: 1px solid #242b3f;
-  margin: 12px 0;
-}
-
-.infoRow {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-  color: #aeb4d0;
-  font-size: 14px;
-}
-
-.infoRow strong {
-  color: #e1e5ff;
-  font-weight: normal;
-}
-
 .menu {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: auto;
+  /* margin-top: auto; */
   padding-top: 12px;
 }
 
