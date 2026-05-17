@@ -4,9 +4,10 @@ import Nav from "../components/Nav";
 import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import styles from "./MainLayout.module.css";
+import { DEFAULT_PLANET } from "../data/planets";
 
 function MainLayout() {
-  const [selectedPlanet, setSelectedPlanet] = useState(null);
+  const [selectedPlanet, setSelectedPlanet] = useState(DEFAULT_PLANET);
 
   return (
     <div className={styles.page}>

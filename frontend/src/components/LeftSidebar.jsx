@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./LeftSidebar.module.css";
 import { useState } from "react";
 import profileImage from "../assets/사람2.jpg";
+import { DEFAULT_PLANET } from "../data/planets";
 
 function LeftSidebar() {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -57,7 +58,14 @@ function LeftSidebar() {
 
       <nav className={styles.menu}>
         <Link to="/my-orbit">My Orbit</Link>
-        <Link to="/my-planet">My Planet</Link>
+        <Link
+          to="/my-planet"
+          state={{
+            planet: DEFAULT_PLANET,
+          }}
+        >
+          My Planet
+        </Link>
         <Link to="/message">Message</Link>
         <Link to="/diary">Diary</Link>
         <Link to="/terraforming">Terraforming</Link>

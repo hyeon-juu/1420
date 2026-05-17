@@ -1,19 +1,37 @@
 import styles from "./Diary.module.css";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
-function Diary(){
+function Diary() {
   const MAX_LENGTH = 1000;
 
+  const [searchParams] = useSearchParams();
+
   const [text, setText] = useState("");
-  // 날짜
   const [now, setNow] = useState(new Date());
-  // 일기 목록 (배열로 저장)
-  const [logs, setLogs] = useState([]);
-  // 아카이브
+
+  const [logs, setLogs] = useState(() => {
+    const savedLogs = localStorage.getItem("diaryLogs");
+
+    if (!savedLogs) return [];
+
+    try {
+      return JSON.parse(savedLogs);
+    } catch {
+      return [];
+    }
+  });
+
   const [isArchiveView, setIsArchiveView] = useState(false);
   const [selectedLog, setSelectedLog] = useState(null);
 
-  // 시간..?
+  const todayKey = getDateKey(new Date());
+  const selectedDateKey = searchParams.get("date") || todayKey;
+
+  const selectedDateLogs = logs.filter((log) => {
+    return log.dateKey === selectedDateKey;
+  });
+
   useEffect(() => {
     const timer = setInterval(() => {
       setNow(new Date());
@@ -22,7 +40,22 @@ function Diary(){
     return () => clearInterval(timer);
   }, []);
 
-  const formatDate = (date) => {
+  function updateLogs(nextLogs) {
+    setLogs(nextLogs);
+    localStorage.setItem("diaryLogs", JSON.stringify(nextLogs));
+
+    window.dispatchEvent(new Event("diaryLogsChanged"));
+  }
+
+  function getDateKey(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+  function formatDateTime(date) {
     return date.toLocaleString("ko-KR", {
       year: "numeric",
       month: "2-digit",
@@ -30,50 +63,54 @@ function Diary(){
       hour: "2-digit",
       minute: "2-digit",
     });
-  };
+  }
 
-  // Save 
-  const handleSave = () => {
+  function formatDateKey(dateKey) {
+    return dateKey.replaceAll("-", ".");
+  }
+
+  function handleSave() {
     if (!text.trim()) return;
 
-    // 새로운 일기 객체
     const newLog = {
       id: Date.now(),
-      number: String(logs.length + 1),
-      date: formatDate(new Date()),
+      number: String(logs.length + 1).padStart(4, "0"),
+      dateKey: selectedDateKey,
+      date: formatDateTime(new Date()),
       content: text,
     };
 
-    setLogs([newLog, ...logs]);
+    const nextLogs = [newLog, ...logs];
+
+    updateLogs(nextLogs);
     setText("");
-  };
+  }
 
-
-  const handleNewEntry = () => {
+  function handleNewEntry() {
     if (text.trim()) {
       const result = window.confirm(
-        "현재 글은 저장되지 않습니다. 새 Entry로 바꿀까요?"
+        "현재 글은 저장되지 않습니다. 새 Entry로 바꿀까요?",
       );
 
       if (!result) return;
     }
 
     setText("");
-  };
+  }
 
-  const handleDelete = () => {
+  function handleDelete() {
     setText("");
-  };
+  }
 
-  const handleArchive = () => {
+  function handleArchive() {
     setSelectedLog(null);
     setIsArchiveView(true);
-  };
+  }
 
-  const handleCloseArchive = () => {
+  function handleCloseArchive() {
     setSelectedLog(null);
     setIsArchiveView(false);
-  };
+  }
 
   return (
     <section className={styles.container}>
@@ -90,7 +127,8 @@ function Diary(){
         <div className={styles.logEditor}>
           <div className={styles.editorHeader}>
             <span>&gt; LOG_{String(logs.length + 1).padStart(4, "0")}</span>
-            <span>DATE {formatDate(now)}</span>
+            <span>SELECTED DATE {formatDateKey(selectedDateKey)}</span>
+            <span>NOW {formatDateTime(now)}</span>
             <span>PLANET 1420-7B</span>
           </div>
 
@@ -100,7 +138,9 @@ function Diary(){
               value={text}
               maxLength={MAX_LENGTH}
               onChange={(e) => setText(e.target.value)}
-              placeholder="오늘의 신호를 기록하세요..."
+              placeholder={`${formatDateKey(
+                selectedDateKey,
+              )}의 신호를 기록하세요...`}
             />
           </div>
 
@@ -120,12 +160,14 @@ function Diary(){
         </div>
 
         <div className={styles.logHistory}>
-          <h5>RECENT ENTRIES</h5>
+          <h5>{formatDateKey(selectedDateKey)} ENTRIES</h5>
 
-          {logs.length === 0 ? (
-            <p className={styles.emptyText}>저장된 기록이 없습니다.</p>
+          {selectedDateLogs.length === 0 ? (
+            <p className={styles.emptyText}>
+              이 날짜에 저장된 기록이 없습니다.
+            </p>
           ) : (
-            logs.slice(0, 4).map((log) => (
+            selectedDateLogs.map((log) => (
               <button
                 key={log.id}
                 className={styles.historyItem}

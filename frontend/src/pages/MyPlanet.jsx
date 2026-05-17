@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 import styles from "./MyPlanet.module.css";
 
+import { DEFAULT_PLANET } from "../data/planets";
+
 const DEFAULT_BUILDING_BUTTONS = [
   {
     id: "observatory",
@@ -36,24 +38,11 @@ const DEFAULT_BUILDING_BUTTONS = [
 
 function MyPlanet() {
   const location = useLocation();
-  const planet = location.state?.planet;
+
+  const planet = location.state?.planet || DEFAULT_PLANET;
 
   function handleBuildingClick(building) {
     alert(`${building.label} 클릭`);
-  }
-
-  if (!planet) {
-    return (
-      <section className={styles.container}>
-        <div className={styles.emptyPanel}>
-          <span className={styles.star}>✦</span>
-          <h1 className={styles.title}>선택된 행성이 없습니다</h1>
-          <p className={styles.description}>
-            My Orbit에서 행성을 선택한 뒤 이동해주세요.
-          </p>
-        </div>
-      </section>
-    );
   }
 
   const buildingButtons = planet.buildings || DEFAULT_BUILDING_BUTTONS;

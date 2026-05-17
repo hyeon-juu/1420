@@ -321,3 +321,321 @@
     inset 0 0 18px rgba(130, 140, 255, 0.16),
     0 0 14px rgba(118, 103, 255, 0.28);
 }
+
+/* diary's rightside bar css */
+.diaryPanel {
+  height: 100%;
+  min-height: 0;
+  padding: 18px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  overflow: hidden;
+  color: #d8dcff;
+  font-family: "Courier New", monospace;
+}
+
+.diarySection {
+  position: relative;
+  border: 1px solid rgba(101, 88, 217, 0.34);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 12, 24, 0.96),
+    rgba(2, 4, 10, 0.96)
+  );
+  box-shadow:
+    inset 0 0 18px rgba(101, 88, 217, 0.09),
+    0 0 16px rgba(0, 0, 0, 0.35);
+  padding: 18px 18px 16px;
+  box-sizing: border-box;
+}
+
+.diarySection::before,
+.diarySection::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgba(118, 103, 255, 0.5);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.diarySection::before {
+  left: 4px;
+  top: 4px;
+  border-width: 1px 0 0 1px;
+}
+
+.diarySection::after {
+  right: 4px;
+  bottom: 4px;
+  border-width: 0 1px 1px 0;
+}
+
+.diarySectionTitle {
+  margin: 0 0 16px;
+  color: #7fb8d8;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(127, 184, 216, 0.38);
+}
+
+/* Calendar */
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.calendarHeader strong {
+  color: #7fb8d8;
+  font-size: 21px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.calendarHeader button {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  color: #7fb8d8;
+  font-size: 30px;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.calendarHeader button:hover {
+  color: #a7ffd1;
+  text-shadow: 0 0 10px rgba(167, 255, 209, 0.65);
+}
+
+.calendarWeekNames,
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.calendarWeekNames {
+  margin-bottom: 11px;
+}
+
+.calendarWeekNames span {
+  color: #aeb4d0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.calendarGrid {
+  row-gap: 8px;
+}
+
+.calendarDate {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+
+  border: 1px solid transparent;
+  background: transparent;
+
+  color: #d8dcff;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.calendarDate:hover {
+  color: #a7ffd1;
+  border-color: rgba(167, 255, 209, 0.45);
+  background: rgba(167, 255, 209, 0.06);
+}
+
+.calendarMuted {
+  color: rgba(174, 180, 208, 0.36);
+}
+
+.calendarActive {
+  color: #a7ffd1;
+  border-color: rgba(127, 184, 216, 0.8);
+  background: rgba(127, 184, 216, 0.14);
+  box-shadow:
+    inset 0 0 10px rgba(127, 184, 216, 0.22),
+    0 0 12px rgba(127, 184, 216, 0.22);
+}
+
+/* Statistics */
+.diaryStats {
+  display: flex;
+  flex-direction: column;
+}
+
+.diaryStatRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 38px;
+  border-bottom: 1px solid rgba(101, 88, 217, 0.12);
+}
+
+.diaryStatRow:last-child {
+  border-bottom: 0;
+}
+
+.diaryStatRow span {
+  color: #aeb4d0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.diaryStatRow strong {
+  color: #b7d8a6;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* Memory Signal */
+.signalBox {
+  position: relative;
+  height: 108px;
+  border: 1px solid rgba(127, 184, 216, 0.15);
+  background:
+    linear-gradient(rgba(127, 184, 216, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127, 184, 216, 0.08) 1px, transparent 1px),
+    rgba(2, 4, 10, 0.52);
+  background-size: 18px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.signalLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(127, 184, 216, 0.22);
+}
+
+.signalBars {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.signalBars span {
+  width: 3px;
+  height: var(--signal-height);
+  background: #7ed9e8;
+  box-shadow: 0 0 7px rgba(126, 217, 232, 0.72);
+  opacity: 0.9;
+}
+
+.stabilityRow {
+  margin-top: 13px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #b7d8a6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.stabilityBars {
+  display: flex;
+  gap: 4px;
+}
+
+.stabilityBars span {
+  width: 5px;
+  height: 12px;
+  background: rgba(174, 180, 208, 0.18);
+}
+
+.stabilityBars .stabilityActive {
+  background: #7fb8d8;
+  box-shadow: 0 0 6px rgba(127, 184, 216, 0.6);
+}
+
+/* Backup */
+.backupRows {
+  display: flex;
+  flex-direction: column;
+}
+
+.backupRows div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 42px;
+  border-bottom: 1px solid rgba(101, 88, 217, 0.12);
+}
+
+.backupRows div:last-child {
+  border-bottom: 0;
+}
+
+.backupRows span {
+  color: #aeb4d0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.backupRows strong {
+  color: #d8dcff;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.backupRows .backupOk {
+  color: #9fdf87;
+  text-shadow: 0 0 8px rgba(159, 223, 135, 0.45);
+}
+.hasDiary {
+  position: relative;
+}
+
+.hasDiary::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+  background: #a7ffd1;
+  box-shadow: 0 0 8px rgba(167, 255, 209, 0.85);
+
+  transform: translateX(-50%);
+}
