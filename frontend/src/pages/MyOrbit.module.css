@@ -1,40 +1,207 @@
 .container {
   width: 100%;
-  min-height: 100%;
-  padding: 24px;
-  border-radius: 20px;
-  background-color: #ffffff;
-  box-sizing: border-box;
-}
-
-.page {
-  min-height: 100vh;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
   background:
     radial-gradient(
-      circle at 50% 48%,
-      rgba(24, 68, 122, 0.28),
-      transparent 42%
+      circle at center,
+      rgba(101, 88, 217, 0.16),
+      transparent 34%
     ),
-    #040811;
-  color: white;
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(167, 255, 209, 0.08),
+      transparent 22%
+    ),
+    #050711;
+  font-family: "Courier New", monospace;
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr) 320px;
-  gap: 20px;
-  height: calc(100vh - 72px);
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.centerArea {
+.orbitMap {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
+  width: min(100%, 900px);
+  height: 100%;
+  max-height: 100%;
+  aspect-ratio: 900 / 700;
+  margin: 0 auto;
   overflow: hidden;
-  border: 1px solid rgba(80, 124, 180, 0.28);
-  background: rgba(2, 8, 18, 0.45);
+}
+
+.orbitMap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(167, 255, 209, 0.8) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(216, 220, 255, 0.7) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 65% 75%,
+      rgba(216, 220, 255, 0.65) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 40% 60%,
+      rgba(118, 103, 255, 0.55) 0 1px,
+      transparent 1.5px
+    );
+  background-size:
+    180px 180px,
+    220px 220px,
+    260px 260px,
+    300px 300px;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.orbitMap::after {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border: 1px solid rgba(101, 88, 217, 0.12);
+  box-shadow: inset 0 0 40px rgba(130, 140, 255, 0.06);
+  pointer-events: none;
+}
+
+.orbitSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.orbitCircle {
+  fill: none;
+  stroke: rgba(118, 103, 255, 0.38);
+  stroke-width: 2;
+  stroke-dasharray: 5 10;
+  filter: drop-shadow(0 0 6px rgba(118, 103, 255, 0.25));
+}
+
+.planetLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.planetNode {
+  position: absolute;
+  width: var(--planet-size);
+  min-height: calc(var(--planet-size) + 58px);
+  padding: 0;
+  border: none;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.planetMe {
+  left: 50%;
+  top: 50%;
+  z-index: 350;
+  --planet-size: 210px;
+}
+
+.planetShaco {
+  left: 28.83%;
+  top: 34.29%;
+  z-index: 240;
+  --planet-size: 90px;
+}
+
+.planetEarth {
+  left: 72.14%;
+  top: 16.08%;
+  z-index: 113;
+  --planet-size: 100px;
+}
+
+.planetImage {
+  width: var(--planet-size);
+  height: var(--planet-size);
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 14px rgba(167, 255, 209, 0.12));
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.planetNode:hover .planetImage {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 12px rgba(167, 255, 209, 0.28))
+    drop-shadow(0 0 22px rgba(118, 103, 255, 0.22));
+}
+
+.nameCard {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--planet-size) + 8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 118px;
+  padding: 8px 12px;
+  border: 1px solid #252c40;
+  background: rgba(8, 12, 24, 0.9);
+  color: #aeb4d0;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  box-shadow:
+    inset 0 0 14px rgba(130, 140, 255, 0.08),
+    0 8px 18px rgba(0, 0, 0, 0.35);
+  letter-spacing: 1px;
+}
+
+.nameCard strong {
+  color: #d8dcff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.nameCard span {
+  color: #806cff;
+}
+
+.planetNode:hover .nameCard {
+  border-color: #7667ff;
+  background: rgba(21, 27, 45, 0.94);
+  color: #ffffff;
+  box-shadow:
+    inset 0 0 16px rgba(130, 140, 255, 0.14),
+    0 0 18px rgba(118, 103, 255, 0.22);
+}
+
+.centerPlanet .nameCard {
+  top: calc(var(--planet-size) - 2px);
+  min-width: 150px;
+  padding: 10px 16px;
+  border-color: rgba(101, 88, 217, 0.7);
+  background: rgba(3, 6, 17, 0.94);
+}
+
+.centerPlanet .nameCard strong {
+  color: #eef0ff;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.centerPlanet .nameCard span {
+  color: #a7ffd1;
+  font-size: 14px;
+  text-shadow: 0 0 8px rgba(167, 255, 209, 0.45);
 }
